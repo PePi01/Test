@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,17 @@ namespace Test.Controllers
         {
             List<Pet> pets = ctx.Pets.ToList();
             return View(pets);
+        }public ActionResult Custom(int id)
+        {
+            Pet pet = GetPet(id);
+            return View(pet);
         }
 
         // GET: PetController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Pet pet = GetPet(id);
+            return View(pet);
         }
 
 
@@ -63,16 +69,20 @@ namespace Test.Controllers
         // GET: PetController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Pet pet = GetPet(id);
+            return View(pet);
         }
 
         // POST: PetController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Pet pet)
         {
             try
             {
+                ctx.Pets.Attach(pet);
+                ctx.Entry(pet).State = EntityState.Modified;
+                ctx.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -84,22 +94,31 @@ namespace Test.Controllers
         // GET: PetController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Pet pet = GetPet(id);
+            return View(pet);
         }
 
         // POST: PetController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Pet pet)
         {
             try
             {
+                ctx.Pets.Attach(pet);
+                ctx.Entry(pet).State = EntityState.Deleted;
+                ctx.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+
+        private Pet GetPet(int id)
+        {
+            return ctx.Pets.Where(t => t.Id == id).FirstOrDefault();
         }
     }
 }
