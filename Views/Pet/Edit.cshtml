@@ -1,5 +1,4 @@
 ﻿@model Test.Models.Pet
-
 @{
     ViewData["Title"] = "Edit";
 }
@@ -27,6 +26,11 @@
                 <label asp-for="CustomerId" class="control-label"></label>
                 <input asp-for="CustomerId" type="number" class="form-control" />
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jabs" class="control-label"></label>
+                <input asp-for="Jabs" type="number" class="form-control" />
+                <span asp-validation-for="Jabs" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

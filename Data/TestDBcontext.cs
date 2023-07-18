@@ -61,6 +61,8 @@ namespace Test.Data
                 new Jab(){ Id=1, PetId=1, Type="Fereghajto"},
                 new Jab(){ Id=2, PetId=2, Type="C-Vitamin"},
                 new Jab(){ Id=3, PetId=1, Type="Sooldat"},
+                new Jab(){ Id=4, PetId=1, Type="Tea"},
+                new Jab(){ Id=5, PetId=1, Type="Coke"},
             });
 
             modelBuilder.Entity<Pet>().HasData(new Pet[]
