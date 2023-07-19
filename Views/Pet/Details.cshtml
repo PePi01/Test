@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     string jabs = "";
+    string ident = "";
 }
 <h1>Details</h1>
 
@@ -38,10 +39,11 @@
         </dt>
    @foreach (var item in Model.Jabs)
    {
-       
-       jabs += item.Type + " ID: "+item.Id;
+
+       jabs += item.Type + " ID: " + item.Id;
+       ident = Model.Id.ToString() + item.Id;
         <dd class = "col-sm-2">
-            @jabs | <a asp-action="Remove" asp-route-id="@item.Id">Remove</a>
+                @jabs | <a asp-action="Remove" asp-route-id="@ident">Remove</a>
         </dd>
        jabs = string.Empty;
    }

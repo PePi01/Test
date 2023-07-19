@@ -10,45 +10,44 @@ using Test.Models;
 
 namespace Test.Controllers
 {
-    public class PetController : Controller
+    public class JabController : Controller
     {
         private readonly TestDBcontext ctx;
 
-        public PetController(TestDBcontext ctx)
+        public JabController(TestDBcontext ctx)
         {
             this.ctx = ctx;
         }
 
-        // GET: PetController
+        // GET: JabController
         public ActionResult Index()
         {
-            List<Pet> pets = ctx.Pets.ToList();
-            return View(pets);
+            List<Jab> jabs = ctx.Jabs.ToList();
+            return View(jabs);
         }
 
-        // GET: PetController/Details/5
+        // GET: JabController/Details/5
         public ActionResult Details(int id)
         {
-            Pet pet = GetPet(id);
-            return View(pet);
+            Jab jab = GetJab(id);
+            return View(jab);
         }
 
-
-        // GET: PetController/Create
+        // GET: JabController/Create
         public ActionResult Create()
         {
-            Pet pet = new Pet();
-            return View(pet);
+            Jab jab = new Jab();
+            return View(jab);
         }
 
-        // POST: PetController/Create
+        // POST: JabController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Pet pet)
+        public ActionResult Create(Jab jab)
         {
             try
             {
-                ctx.Pets.Add(pet);
+                ctx.Jabs.Add(jab);
                 ctx.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -58,22 +57,22 @@ namespace Test.Controllers
             }
         }
 
-        // GET: PetController/Edit/5
+        // GET: JabController/Edit/5
         public ActionResult Edit(int id)
         {
-            Pet pet = GetPet(id);
-            return View(pet);
+            Jab jab = GetJab(id);
+            return View(jab);
         }
 
-        // POST: PetController/Edit/5
+        // POST: JabController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Pet pet)
+        public ActionResult Edit(Jab jab)
         {
             try
             {
-                ctx.Pets.Attach(pet);
-                ctx.Entry(pet).State = EntityState.Modified;
+                ctx.Jabs.Attach(jab);
+                ctx.Entry(jab).State = EntityState.Modified;
                 ctx.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -83,22 +82,22 @@ namespace Test.Controllers
             }
         }
 
-        // GET: PetController/Delete/5
+        // GET: JabController/Delete/5
         public ActionResult Delete(int id)
         {
-            Pet pet = GetPet(id);
-            return View(pet);
+            Jab jab = GetJab(id);
+            return View(jab);
         }
 
-        // POST: PetController/Delete/5
+        // POST: JabController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Pet pet)
+        public ActionResult Delete(Jab jab)
         {
             try
             {
-                ctx.Pets.Attach(pet);
-                ctx.Entry(pet).State = EntityState.Deleted;
+                ctx.Jabs.Attach(jab);
+                ctx.Entry(jab).State = EntityState.Deleted;
                 ctx.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -108,9 +107,9 @@ namespace Test.Controllers
             }
         }
 
-        private Pet GetPet(int id)
+        private Jab GetJab(int id)
         {
-            return ctx.Pets.Where(t => t.Id == id).FirstOrDefault();
+            return ctx.Jabs.Where(t => t.Id == id).FirstOrDefault();
         }
     }
 }
