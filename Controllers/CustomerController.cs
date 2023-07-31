@@ -24,6 +24,12 @@ namespace Test.Controllers
         }
         // /Views/Customer/Create.cshtml /Views/Shared/Create.cshtml
 
+        public ActionResult Details(int id)
+        {
+            Customer cus = GetCustomer(id);
+            return View(cus);
+        }
+
         public IActionResult Create()
         {
             Customer customer = new Customer();
