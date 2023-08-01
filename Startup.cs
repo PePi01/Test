@@ -40,6 +40,8 @@ namespace Test
             }
             app.UseStaticFiles();
 
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
             app.UseAuthorization();

@@ -108,9 +108,26 @@ namespace Test.Controllers
             }
         }
 
+        public ActionResult Remove(int s)
+        {
+            ;
+            //int pet = int.Parse(s.Split(':')[0]);
+            //int jab = int.Parse(s.Split(':')[1]);
+
+            //Jab djab = GetJab(jab);
+            //ctx.Jabs.Attach(djab);
+            //ctx.Entry(djab).State = EntityState.Deleted;
+            //ctx.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
         private Pet GetPet(int id)
         {
             return ctx.Pets.Where(t => t.Id == id).FirstOrDefault();
+        }
+        private Jab GetJab(int id)
+        {
+            return ctx.Jabs.Where(t => t.Id == id).FirstOrDefault();
         }
     }
 }

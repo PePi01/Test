@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     string jabs = "";
-    string ident = "";
+    int ident = 2;
 }
 <h1>Details</h1>
 
@@ -42,7 +42,7 @@
    {
 
        jabs += item.Type + " ID: " + item.Id;
-       ident = Model.Id.ToString() + item.Id;
+       ident = int.Parse(Model.Id.ToString() + item.Id);
         <dd class = "col-sm-2">
                 @jabs | <a asp-action="Remove" asp-route-id="@ident">Remove</a>
         </dd>
