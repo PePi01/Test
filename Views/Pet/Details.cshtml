@@ -40,13 +40,9 @@
         </dt>
    @foreach (var item in Model.Jabs)
    {
-
-       jabs += item.Type + " ID: " + item.Id;
-       ident = int.Parse(Model.Id.ToString() + item.Id);
         <dd class = "col-sm-2">
-                @jabs | <a asp-action="Remove" asp-route-id="@ident">Remove</a>
+                @item.Type
         </dd>
-       jabs = string.Empty;
    }
     </dl>
 </div>

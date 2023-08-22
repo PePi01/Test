@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<Test.Models.Jab>
 
 @{
-    ViewData["Title"] = "Delete2";
-    string asd = "5";
+    ViewData["Title"] = "Pet's jabs";
 }
 
-<h1>Delete2</h1>
+<h1>Delete from pet's jabs</h1>
 
 <p>
     @*<a asp-action="Create">Create New</a>*@
@@ -52,3 +51,6 @@
 }
     </tbody>
 </table>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
