@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Delete2";
+    string asd = "5";
 }
 
 <h1>Delete2</h1>
@@ -13,17 +14,24 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pet)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    ;
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
@@ -31,9 +39,14 @@
                 @Html.DisplayFor(modelItem => item.Pet.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete2" asp-route-id="@item.Id">Delete</a>*@
+                <form asp-action="Delete2">
+                    <input type="hidden" asp-route-id="@item.Id" />
+                    <input type="submit" value="Delete Jab" class="btn btn-danger" />
+                    
+                </form>
             </td>
         </tr>
 }

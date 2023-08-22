@@ -86,6 +86,7 @@ namespace Test.Controllers
         // GET: PetController/Delete/5
         public ActionResult Delete(int id)
         {
+            
             //Jab jab = GetJab(id);
             //ctx.Jabs.Attach(jab);
             //ctx.Entry(jab).State = EntityState.Deleted;
@@ -95,6 +96,7 @@ namespace Test.Controllers
             Pet pet = GetPet(id);
             return View(pet);
         }
+        
 
         // POST: PetController/Delete/5
         [HttpPost]
@@ -103,6 +105,7 @@ namespace Test.Controllers
         {
             try
             {
+                
                 ctx.Pets.Attach(pet);
                 ctx.Entry(pet).State = EntityState.Deleted;
                 ctx.SaveChanges();
@@ -116,9 +119,9 @@ namespace Test.Controllers
 
         public ActionResult Delete2(int id)
         {
-            ;
+            
             List<Jab> asd = GetJabs(id).ToList();
-            ;
+            
             //Jab jab = GetJab(id);
             //ctx.Jabs.Attach(jab);
             //ctx.Entry(jab).State = EntityState.Deleted;
@@ -136,6 +139,7 @@ namespace Test.Controllers
         {
             try
             {
+                ;
                 ctx.Jabs.Attach(jab);
                 ctx.Entry(jab).State = EntityState.Deleted;
                 ctx.SaveChanges();
@@ -152,7 +156,7 @@ namespace Test.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Remove(int s)
         {
-            ;
+            
             //int pet = int.Parse(s.Split(':')[0]);
             //int jab = int.Parse(s.Split(':')[1]);
 
@@ -174,7 +178,13 @@ namespace Test.Controllers
         private IQueryable<Jab> GetJabs(int id)
         {
             var asd = ctx.Jabs.Where(t => t.PetId == id).Select(t => t);
-            ;
+            
+            return asd;
+        }
+        private IQueryable<Jab> GetDelJab(int id)
+        {
+            var asd = ctx.Jabs.Where(t => t.Id == id).Select(t => t);
+            
             return asd;
         }
     }
